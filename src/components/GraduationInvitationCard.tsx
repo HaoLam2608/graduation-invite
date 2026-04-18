@@ -154,7 +154,7 @@ function GraduationInvitationCard({
                 initial={embedded ? false : { opacity: 0, y: 48 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={embedded ? { duration: 0.35 } : { duration: 0.95, ease: [0.2, 0.8, 0.2, 1] }}
-                className={`${embedded ? 'mx-auto w-full max-w-[46rem]' : 'navy-glow mx-auto w-full max-w-4xl'}`}
+                className={`${embedded ? 'mx-auto w-full max-w-5xl' : 'navy-glow mx-auto w-full max-w-4xl'}`}
             >
                 <motion.article
                     onClick={() => {

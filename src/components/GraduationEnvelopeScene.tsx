@@ -26,9 +26,9 @@ function GraduationEnvelopeScene() {
                                 delay: 0.48,
                                 ease: [0.2, 0.65, 0.3, 0.95],
                             }}
-                            className="absolute inset-0 z-30 flex items-center justify-center px-3 sm:px-4"
+                            className="absolute inset-0 z-30 flex items-center justify-center"
                         >
-                            <div className="w-[min(94vw,46rem)]">
+                            <div className="w-full max-w-6xl">
                                 <GraduationInvitationCard embedded showToggleButton={false} />
                             </div>
                         </motion.div>
