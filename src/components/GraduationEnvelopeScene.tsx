@@ -13,7 +13,7 @@ function GraduationEnvelopeScene() {
 
     return (
         <section className="relative z-10 flex min-h-screen w-full items-center justify-center px-4 py-6 sm:px-8 lg:px-10">
-            <div className="relative h-[min(94vh,58rem)] w-full max-w-6xl">
+            <div className="relative h-[min(94vh,56rem)] w-full max-w-5xl">
                 <AnimatePresence>
                     {isOpened && (
                         <motion.div
@@ -28,14 +28,14 @@ function GraduationEnvelopeScene() {
                             }}
                             className="absolute inset-0 z-30 flex items-center justify-center"
                         >
-                            <div className="w-full max-w-6xl">
+                            <div className="w-[min(92vw,58rem)]">
                                 <GraduationInvitationCard embedded showToggleButton={false} />
                             </div>
                         </motion.div>
                     )}
                 </AnimatePresence>
 
-                <div className="absolute left-1/2 top-1/2 z-20 w-[min(96vw,50rem)] -translate-x-1/2 -translate-y-1/2 perspective-[1000px] [perspective:1000px]">
+                <div className="absolute left-1/2 top-1/2 z-20 w-[min(92vw,44rem)] -translate-x-1/2 -translate-y-1/2 perspective-[1000px] [perspective:1000px]">
                     <motion.div
                         initial={false}
                         animate={isOpened ? { opacity: 0, scale: 0.9, y: 120 } : { opacity: 1, scale: 1, y: 0 }}
@@ -44,7 +44,7 @@ function GraduationEnvelopeScene() {
                             delay: isOpened ? 0.9 : 0,
                             ease: [0.22, 0.61, 0.36, 1],
                         }}
-                        className="relative h-[23rem] w-full cursor-pointer [transform-style:preserve-3d] sm:h-[27rem]"
+                        className="relative h-[21rem] w-full cursor-pointer [transform-style:preserve-3d] sm:h-[24rem]"
                         onClick={handleOpenEnvelope}
                         role="button"
                         tabIndex={0}
@@ -141,7 +141,7 @@ function GraduationEnvelopeScene() {
 
                     <AnimatePresence>
                         {!isOpened && (
-                            <div className="pointer-events-none absolute left-1/2 top-[calc(100%+3.2rem)] z-40 w-[min(96vw,50rem)] -translate-x-1/2 px-4">
+                            <div className="pointer-events-none absolute left-1/2 top-[calc(100%+3.2rem)] z-40 w-[min(92vw,44rem)] -translate-x-1/2 px-4">
                                 <motion.p
                                     key="envelope-hint"
                                     initial={{ opacity: 0, y: 8 }}

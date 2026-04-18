@@ -154,7 +154,7 @@ function GraduationInvitationCard({
                 initial={embedded ? false : { opacity: 0, y: 48 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={embedded ? { duration: 0.35 } : { duration: 0.95, ease: [0.2, 0.8, 0.2, 1] }}
-                className={`${embedded ? 'mx-auto w-full max-w-5xl' : 'navy-glow mx-auto w-full max-w-4xl'}`}
+                className={`${embedded ? 'mx-auto w-full max-w-4xl' : 'navy-glow mx-auto w-full max-w-4xl'}`}
             >
                 <motion.article
                     onClick={() => {
@@ -168,7 +168,7 @@ function GraduationInvitationCard({
                     <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(112,156,226,0.32),transparent_56%)]" />
                     <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(130deg,transparent_0%,rgba(43,92,170,0.2)_47%,transparent_100%)]" />
 
-                    <div className="relative p-6 sm:p-8 lg:p-10">
+                    <div className="relative p-5 sm:p-6 lg:p-7">
                         <div className="mb-5 flex items-center justify-between border-b border-[#99b8e0] pb-5">
                             <span className="font-['Inter'] text-xs uppercase tracking-[0.35em] text-[#355f97]">
                                 Lễ Tốt Nghiệp 2026

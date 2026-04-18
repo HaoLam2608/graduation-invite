@@ -21,13 +21,13 @@ function InvitationFrontCover({ isOpen, invitation, portraitSrc, onContinue }: I
                     animate={{ x: 0, opacity: 1 }}
                     exit={{ x: '102%', opacity: 0.2 }}
                     transition={{ duration: 0.95, ease: [0.22, 0.61, 0.36, 1] }}
-                    className="absolute inset-0 z-20 cursor-pointer bg-[linear-gradient(145deg,#071a36_0%,#0a2a57_45%,#12396f_100%)] p-6 sm:p-8 lg:p-10"
+                    className="absolute inset-0 z-20 cursor-pointer bg-[linear-gradient(145deg,#071a36_0%,#0a2a57_45%,#12396f_100%)] p-5 sm:p-6 lg:p-7"
                     aria-hidden="true"
                 >
                     <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,rgba(117,167,236,0.18)_0%,transparent_40%,rgba(149,193,255,0.2)_100%)]" />
                     <div className="pointer-events-none absolute inset-0 opacity-35 [background-image:linear-gradient(rgba(165,199,248,0.22)_1px,transparent_1px),linear-gradient(90deg,rgba(165,199,248,0.22)_1px,transparent_1px)] [background-size:40px_40px]" />
 
-                    <div className="relative rounded-[1.5rem] border border-[#88adde]/55 bg-[linear-gradient(160deg,rgba(16,46,90,0.86),rgba(11,34,72,0.9))] p-5 shadow-[0_12px_30px_rgba(8,24,50,0.5)] sm:p-7 lg:p-8">
+                    <div className="relative rounded-[1.5rem] border border-[#88adde]/55 bg-[linear-gradient(160deg,rgba(16,46,90,0.86),rgba(11,34,72,0.9))] p-4 shadow-[0_12px_30px_rgba(8,24,50,0.5)] sm:p-5 lg:p-6">
                         <div className="flex flex-col">
                             <div className="space-y-3">
                                 <p className="font-['Inter'] text-xs uppercase tracking-[0.34em] text-[#8bb5ec]">
