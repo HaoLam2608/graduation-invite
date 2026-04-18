@@ -13,7 +13,7 @@ function GraduationEnvelopeScene() {
 
     return (
         <section className="relative z-10 flex min-h-screen w-full items-center justify-center px-4 py-6 sm:px-8 lg:px-10">
-            <div className="relative h-[min(94vh,56rem)] w-full max-w-5xl origin-center scale-[0.8]">
+            <div className="relative h-[min(94vh,56rem)] w-full max-w-5xl">
                 <AnimatePresence>
                     {isOpened && (
                         <motion.div
@@ -26,16 +26,16 @@ function GraduationEnvelopeScene() {
                                 delay: 0.48,
                                 ease: [0.2, 0.65, 0.3, 0.95],
                             }}
-                            className="absolute inset-0 z-30 flex items-center justify-center"
+                            className="fixed inset-0 z-40 overflow-y-auto overscroll-contain px-3 py-4 sm:px-6 sm:py-8"
                         >
-                            <div className="w-[min(92vw,58rem)]">
+                            <div className="mx-auto w-[min(94vw,54rem)] origin-top scale-[0.8] sm:w-[min(92vw,58rem)]">
                                 <GraduationInvitationCard embedded />
                             </div>
                         </motion.div>
                     )}
                 </AnimatePresence>
 
-                <div className="absolute left-1/2 top-1/2 z-20 w-[min(92vw,44rem)] -translate-x-1/2 -translate-y-1/2 perspective-[1000px] [perspective:1000px]">
+                <div className="absolute left-1/2 top-1/2 z-20 w-[min(92vw,44rem)] -translate-x-1/2 -translate-y-1/2 origin-center scale-[0.8] perspective-[1000px] [perspective:1000px]">
                     <motion.div
                         initial={false}
                         animate={isOpened ? { opacity: 0, scale: 0.9, y: 120 } : { opacity: 1, scale: 1, y: 0 }}

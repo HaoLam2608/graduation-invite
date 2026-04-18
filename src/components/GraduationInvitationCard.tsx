@@ -13,13 +13,13 @@ type GraduationInvitationCardProps = {
 const PROFILE_IMAGE_SRC = '/images/lam-nguyen-anh-hao.jpg'
 
 const defaultDetails: InvitationDetails = {
-    recipientName: 'Quý vị khách quý',
+    recipientName: 'Các vị khách quý',
     hostName: 'Lâm Nguyễn Anh Hào',
     degree: 'Cử nhân Công nghệ Thông tin',
     dateText: 'Ngày 23 tháng 4',
     timeText: '12:30 - 14:30',
     venue: 'Trường Đại học Công Thương TP. HCM',
-    note: 'Sự hiện diện của anh/chị/em là niềm vinh hạnh và là niềm vui lớn đối với tôi.',
+    note: 'Sự hiện diện của anh/chị/em/bạn  là niềm vinh hạnh và là niềm vui lớn đối với anh/em/tui.',
 }
 
 const contentVariants: Variants = {
@@ -52,6 +52,11 @@ const lineVariants: Variants = {
         },
     },
 }
+
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i
+const VIETNAM_MOBILE_REGEX = /^(?:\+84|84|0)(?:3|5|7|8|9)\d{8}$/
+
+const normalizePhoneNumber = (value: string) => value.replace(/[.\s()-]/g, '')
 
 const initialFormData: RsvpFormData = {
     guestName: '',
@@ -88,21 +93,37 @@ function GraduationInvitationCard({
 
     const handleSubmitRsvp = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault()
+
+        const trimmedEmail = formData.guestEmail.trim()
+        const normalizedPhone = normalizePhoneNumber(formData.guestPhone)
+
+        if (!EMAIL_REGEX.test(trimmedEmail)) {
+            setSubmitState('error')
+            setSubmitMessage('Email chưa đúng định dạng. Vui lòng kiểm tra lại.')
+            return
+        }
+
+        if (!VIETNAM_MOBILE_REGEX.test(normalizedPhone)) {
+            setSubmitState('error')
+            setSubmitMessage('Số điện thoại phải là số di động Việt Nam hợp lệ (VD: 0912345678 hoặc +84912345678).')
+            return
+        }
+
         setSubmitState('loading')
         setSubmitMessage('Đang gửi xác nhận...')
 
         try {
             const payload = new FormData()
             payload.append('Họ và tên', formData.guestName)
-            payload.append('Email', formData.guestEmail)
-            payload.append('Số điện thoại', formData.guestPhone)
+            payload.append('Email', trimmedEmail)
+            payload.append('Số điện thoại', normalizedPhone)
             payload.append('Trạng thái tham gia', formData.attendance)
             payload.append('Lời nhắn', formData.message || '(Không có)')
             payload.append('Sự kiện', 'Lễ Tốt Nghiệp - Lâm Nguyễn Anh Hào')
             payload.append('Thời gian sự kiện', `${invitation.dateText} - ${invitation.timeText}`)
             payload.append('Địa điểm sự kiện', invitation.venue)
             payload.append('_subject', `RSVP mới cho lễ tốt nghiệp - ${formData.guestName}`)
-            payload.append('_replyto', formData.guestEmail)
+            payload.append('_replyto', trimmedEmail)
             payload.append('_captcha', 'false')
             payload.append('_template', 'table')
 
@@ -118,11 +139,11 @@ function GraduationInvitationCard({
                 throw new Error('Gửi thất bại')
             }
 
-            const guestDisplayName = formData.guestName.trim() || 'anh/chị/em'
+            const guestDisplayName = formData.guestName.trim() || 'anh/chị/em/bạn '
             const outcome: RsvpOutcome = formData.attendance === 'Tham gia' ? 'attending' : 'declined'
             const successMessage = formData.attendance === 'Tham gia'
-                ? `${guestDisplayName} ơi, cảm ơn anh/chị/em đã xác nhận tham dự. Sự hiện diện của anh/chị/em là món quà tuyệt vời nhất trong ngày vui của mình. Hẹn gặp anh/chị/em sớm nhé!`
-                : `${guestDisplayName} ơi, mình hoàn toàn hiểu lịch trình bận rộn của anh/chị/em và cảm ơn anh/chị/em đã báo trước. Chúc anh/chị/em luôn vui vẻ, hy vọng chúng ta sẽ sớm có dịp hội ngộ!`
+                ? `${guestDisplayName} ơi, cảm ơn anh/chị/em/bạn  đã xác nhận tham dự. Sự hiện diện của anh/chị/em/bạn  là món quà tuyệt vời nhất trong ngày vui của mình. Hẹn gặp anh/chị/em/bạn  sớm nhé!`
+                : `${guestDisplayName} ơi, mình hoàn toàn hiểu lịch trình bận rộn của anh/chị/em/bạn  và cảm ơn anh/chị/em/bạn  đã báo trước. Chúc anh/chị/em/bạn  luôn vui vẻ, hy vọng chúng ta sẽ sớm có dịp hội ngộ!`
 
             setSubmitState('success')
             setSubmitMessage(successMessage)
@@ -150,11 +171,11 @@ function GraduationInvitationCard({
                 className={`${embedded ? 'mx-auto w-full max-w-4xl' : 'navy-glow mx-auto w-full max-w-4xl'}`}
             >
                 <motion.article
-                    className="relative overflow-hidden rounded-[2rem] border border-[#78a4dc]/80 bg-[linear-gradient(158deg,#dceaff_0%,#d0e4ff_48%,#c2dbfb_100%)] text-[#10284f] shadow-[0_30px_65px_rgba(11,39,84,0.32)] transition duration-500 hover:-translate-y-0.5"
+                    className="relative overflow-hidden rounded-[2rem] border border-[#5f8fc8]/85 bg-[linear-gradient(158deg,#bfd8fa_0%,#a8c9f3_48%,#8db7ea_100%)] text-[#0f2f5f] shadow-[0_30px_65px_rgba(10,34,76,0.38)] transition duration-500 hover:-translate-y-0.5"
                     aria-label="Thiệp mời lễ tốt nghiệp"
                 >
-                    <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(112,156,226,0.34),transparent_56%)]" />
-                    <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(130deg,transparent_0%,rgba(43,92,170,0.18)_47%,transparent_100%)]" />
+                    <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(77,136,216,0.42),transparent_56%)]" />
+                    <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(130deg,transparent_0%,rgba(32,83,164,0.24)_47%,transparent_100%)]" />
                     <div className="pointer-events-none absolute inset-0 opacity-25 [background-image:linear-gradient(rgba(115,160,227,0.22)_1px,transparent_1px),linear-gradient(90deg,rgba(115,160,227,0.22)_1px,transparent_1px)] [background-size:34px_34px]" />
                     <div className="tech-circuit-map opacity-20" />
                     <div className="tech-scanline opacity-60" />

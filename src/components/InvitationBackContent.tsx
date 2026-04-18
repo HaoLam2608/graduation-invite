@@ -62,7 +62,7 @@ function InvitationBackContent({
                 variants={lineVariants}
                 className="font-['Inter'] text-base leading-relaxed text-[#1f4579] sm:text-lg"
             >
-                Trân trọng kính mời anh/chị/em đến tham dự buổi lễ đánh dấu cột mốc đặc biệt của
+                Trân trọng kính mời anh/chị/em/bạn  đến tham dự buổi lễ đánh dấu cột mốc đặc biệt của
                 <span className="ml-2 font-semibold text-transparent gold-text">{invitation.hostName}</span>.
             </motion.p>
 
@@ -73,22 +73,22 @@ function InvitationBackContent({
                 <span className="tech-border-pulse rounded-full border border-[#8fb4e2] bg-[#edf5ff] px-3 py-1 font-['JetBrains_Mono','Consolas','Courier_New',monospace] text-[0.65rem] uppercase tracking-[0.14em] text-[#2f5f99]">
                     module: graduation.invite
                 </span>
-                <span className="tech-border-pulse inline-flex items-center gap-2 rounded-full border border-[#8fb4e2] bg-[#edf5ff] px-3 py-1 font-['JetBrains_Mono','Consolas','Courier_New',monospace] text-[0.65rem] uppercase tracking-[0.14em] text-[#2f5f99]">
+                <span className="tech-border-pulse inline-flex items-center gap-2 rounded-full border border-[#8fb4e2] bg-[#e5f0ff] px-3 py-1 font-['JetBrains_Mono','Consolas','Courier_New',monospace] text-[0.65rem] uppercase tracking-[0.14em] text-[#2f5f99]">
                     <span className="tech-dot-pulse h-1.5 w-1.5 rounded-full bg-[#2f88df]" />
                     status: online
                 </span>
-                <span className="tech-border-pulse rounded-full border border-[#8fb4e2] bg-[#edf5ff] px-3 py-1 font-['JetBrains_Mono','Consolas','Courier_New',monospace] text-[0.65rem] uppercase tracking-[0.14em] text-[#2f5f99]">
+                <span className="tech-border-pulse rounded-full border border-[#8fb4e2] bg-[#e5f0ff] px-3 py-1 font-['JetBrains_Mono','Consolas','Courier_New',monospace] text-[0.65rem] uppercase tracking-[0.14em] text-[#2f5f99]">
                     mode: one-face card
                 </span>
             </motion.div>
 
             <motion.div
                 variants={lineVariants}
-                className="relative grid gap-4 overflow-hidden rounded-2xl border border-[#b3c8e8] bg-[linear-gradient(155deg,#f6fbff_0%,#ebf4ff_46%,#e2eeff_100%)] p-3 sm:grid-cols-[auto_1fr] sm:p-4"
+                className="relative grid gap-4 overflow-hidden rounded-2xl border border-[#9fbee6] bg-[linear-gradient(155deg,#e9f3ff_0%,#dcecff_46%,#cfe2fb_100%)] p-3 sm:grid-cols-[auto_1fr] sm:p-4"
             >
                 <div className="pointer-events-none absolute inset-0 opacity-25 [background-image:linear-gradient(rgba(124,164,220,0.24)_1px,transparent_1px),linear-gradient(90deg,rgba(124,164,220,0.24)_1px,transparent_1px)] [background-size:24px_24px]" />
                 <div className="tech-scanline opacity-35" />
-                <div className="h-32 w-24 overflow-hidden rounded-xl border border-[#bad0ee] bg-[#eff5ff] sm:h-36 sm:w-28">
+                <div className="h-32 w-24 overflow-hidden rounded-xl border border-[#a8c5e9] bg-[#d7e8ff] sm:h-36 sm:w-28">
                     {!imageError ? (
                         <img
                             src={portraitSrc}
@@ -102,7 +102,7 @@ function InvitationBackContent({
                         </div>
                     )}
                 </div>
-                <div className="relative space-y-2 rounded-xl border border-[#b9d0ef]/75 bg-[#f8fbff]/80 p-3">
+                <div className="relative space-y-2 rounded-xl border border-[#a8c4e8]/85 bg-[#e8f2ff]/82 p-3">
                     <p className="font-['JetBrains_Mono','Consolas','Courier_New',monospace] text-[0.64rem] uppercase tracking-[0.16em] text-[#5b7fb3]">
                         system overview
                     </p>
@@ -135,7 +135,7 @@ function InvitationBackContent({
                 <motion.form
                     variants={lineVariants}
                     onSubmit={onSubmitRsvp}
-                    className="relative mt-3 overflow-hidden rounded-2xl border border-[#8cb1df] bg-[linear-gradient(160deg,#f1f7ff_0%,#e2eeff_100%)] p-4 shadow-[0_14px_28px_rgba(14,48,96,0.25)] sm:p-5"
+                    className="relative mt-3 overflow-hidden rounded-2xl border border-[#7fa8dc] bg-[linear-gradient(160deg,#e4f0ff_0%,#d3e4fb_100%)] p-4 shadow-[0_14px_28px_rgba(14,48,96,0.28)] sm:p-5"
                 >
                     <div className="tech-circuit-map opacity-12" />
                     <div className="tech-scanline opacity-40" />
@@ -160,7 +160,7 @@ function InvitationBackContent({
                                     value={formData.guestName}
                                     onChange={onInputChange}
                                     className="rounded-xl border border-[#bfd0ea] bg-white/92 px-3 py-2 text-[#1e467e] outline-none transition duration-300 focus:border-[#3676c3] focus:ring-2 focus:ring-[#6fa9e6]/30 focus:shadow-[0_0_0_1px_rgba(54,118,195,0.22),0_0_14px_rgba(76,141,215,0.22)]"
-                                    placeholder="Nhập họ tên của anh/chị/em"
+                                    placeholder="Nhập họ tên của anh/chị/em/bạn "
                                 />
                             </label>
 
@@ -172,6 +172,9 @@ function InvitationBackContent({
                                     name="guestEmail"
                                     value={formData.guestEmail}
                                     onChange={onInputChange}
+                                    pattern={'^[^\\s@]+@[^\\s@]+\\.[^\\s@]{2,}$'}
+                                    title="Email hợp lệ, ví dụ: ten@example.com"
+                                    autoComplete="email"
                                     className="rounded-xl border border-[#bfd0ea] bg-white/92 px-3 py-2 text-[#1e467e] outline-none transition duration-300 focus:border-[#3676c3] focus:ring-2 focus:ring-[#6fa9e6]/30 focus:shadow-[0_0_0_1px_rgba(54,118,195,0.22),0_0_14px_rgba(76,141,215,0.22)]"
                                     placeholder="you@example.com"
                                 />
@@ -180,12 +183,17 @@ function InvitationBackContent({
                             <label className="flex flex-col gap-1 text-sm font-medium text-[#2e5288]">
                                 Số điện thoại
                                 <input
+                                    required
                                     type="tel"
                                     name="guestPhone"
                                     value={formData.guestPhone}
                                     onChange={onInputChange}
+                                    inputMode="tel"
+                                    autoComplete="tel"
+                                    pattern={'^(?:\\+84|84|0)(?:3|5|7|8|9)\\d{8}$'}
+                                    title="Số di động Việt Nam, ví dụ: 0912345678 hoặc +84912345678"
                                     className="rounded-xl border border-[#bfd0ea] bg-white/92 px-3 py-2 text-[#1e467e] outline-none transition duration-300 focus:border-[#3676c3] focus:ring-2 focus:ring-[#6fa9e6]/30 focus:shadow-[0_0_0_1px_rgba(54,118,195,0.22),0_0_14px_rgba(76,141,215,0.22)]"
-                                    placeholder="090xxxxxxx"
+                                    placeholder="0912345678 hoặc +84912345678"
                                 />
                             </label>
 

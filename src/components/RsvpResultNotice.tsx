@@ -22,7 +22,7 @@ function RsvpResultNotice({ outcome, message, onClose }: RsvpResultNoticeProps) 
                     Trạng thái xác nhận
                 </p>
                 <h3 className="mt-3 font-['Playfair_Display'] text-3xl leading-tight text-transparent gold-text sm:text-4xl">
-                    {isAttending ? 'Cảm ơn anh/chị/em đã xác nhận tham gia' : 'Lấy làm tiếc vì anh/chị/em không thể tham gia'}
+                    {isAttending ? 'Cảm ơn anh/chị/em/bạn  đã xác nhận tham gia' : 'Lấy làm tiếc vì anh/chị/em/bạn  không thể tham gia'}
                 </h3>
                 <p className="mt-3 font-['Inter'] text-base leading-relaxed text-[#e5efff] sm:text-lg">
                     {message}
