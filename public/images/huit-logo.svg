@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-labelledby="huitLogoTitle huitLogoDesc">
+  <title id="huitLogoTitle">HUIT Logo</title>
+  <desc id="huitLogoDesc">Circular HUIT logo used as envelope seal.</desc>
+  <defs>
+    <path id="huit-circle-text" d="M 128 128 m -102 0 a 102 102 0 1 1 204 0 a 102 102 0 1 1 -204 0" />
+  </defs>
+
+  <circle cx="128" cy="128" r="126" fill="#f4f7fc" />
+  <circle cx="128" cy="128" r="118" fill="#ffffff" stroke="#115da9" stroke-width="6" />
+
+  <text fill="#115da9" font-family="Arial, Helvetica, sans-serif" font-size="9.8" font-weight="700" letter-spacing="0.95">
+    <textPath href="#huit-circle-text" startOffset="50%" text-anchor="middle">
+      TRUONG DAI HOC CONG THUONG THANH PHO HO CHI MINH
+    </textPath>
+  </text>
+
+  <circle cx="128" cy="128" r="84" fill="#ffffff" />
+
+  <g fill="#1b5fa7" transform="translate(128 122)">
+    <path d="M -46 -28 L 0 -50 L 46 -28 L 0 -8 Z" />
+    <path d="M -42 -8 L -10 8 L -10 64 L -44 46 Z" />
+    <path d="M 42 -8 L 10 8 L 10 64 L 44 46 Z" />
+    <path d="M -6 6 L 0 10 L 6 6 L 6 70 L 0 73 L -6 70 Z" />
+    <path d="M -27 19 L -10 24 L -10 31 L -30 25 Z" />
+    <path d="M 10 31 L 25 26 L 25 35 L 10 39 Z" />
+    <path d="M 0 -2 L -36 -19 L 0 -36 L 36 -19 Z" opacity="0.96" />
+  </g>
+
+  <circle cx="84" cy="210" r="3.5" fill="#1b5fa7" />
+  <circle cx="172" cy="210" r="3.5" fill="#1b5fa7" />
+  <text x="128" y="218" text-anchor="middle" fill="#d61f3d" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="800" letter-spacing="0.8">HUIT</text>
+</svg>
