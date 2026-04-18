@@ -21,10 +21,29 @@ function RsvpResultNotice({ outcome, message, onClose }: RsvpResultNoticeProps) 
                 <p className="font-['Inter'] text-xs uppercase tracking-[0.28em] text-[#a7c9f5]">
                     Trạng thái xác nhận
                 </p>
-                <h3 className="mt-3 font-['Playfair_Display'] text-3xl leading-tight text-transparent gold-text sm:text-4xl">
-                    {isAttending ? 'Cảm ơn anh/chị/em/bạn  đã xác nhận tham gia' : 'Lấy làm tiếc vì anh/chị/em/bạn  không thể tham gia'}
-                </h3>
-                <p className="mt-3 font-['Inter'] text-base leading-relaxed text-[#e5efff] sm:text-lg">
+                <div className="mt-3 flex items-start gap-3 rounded-xl bg-[#e8f3ff] px-4 py-3">
+                    <span className="mt-1 inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#d6e8ff] text-[#194b87]">
+                        {isAttending ? (
+                            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                                <circle cx="12" cy="12" r="9" />
+                                <circle cx="9" cy="10" r="1" fill="currentColor" stroke="none" />
+                                <circle cx="15" cy="10" r="1" fill="currentColor" stroke="none" />
+                                <path d="M8 14c1 1.4 2.3 2 4 2s3-.6 4-2" />
+                            </svg>
+                        ) : (
+                            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                                <circle cx="12" cy="12" r="9" />
+                                <circle cx="9" cy="10" r="1" fill="currentColor" stroke="none" />
+                                <circle cx="15" cy="10" r="1" fill="currentColor" stroke="none" />
+                                <path d="M8 16c1-1.4 2.3-2 4-2s3 .6 4 2" />
+                            </svg>
+                        )}
+                    </span>
+                    <h3 className="font-['Playfair_Display'] text-2xl leading-tight text-[#133d72] sm:text-3xl">
+                        {isAttending ? 'Cảm ơn anh/chị/em/bạn đã xác nhận tham gia' : 'Lấy làm tiếc vì anh/chị/em/bạn không thể tham gia'}
+                    </h3>
+                </div>
+                <p className="mt-3 rounded-xl bg-[#e8f3ff] px-4 py-3 font-['Inter'] text-base leading-relaxed text-[#133d72] sm:text-lg">
                     {message}
                 </p>
 

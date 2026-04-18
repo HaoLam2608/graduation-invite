@@ -8,6 +8,7 @@ import type { InvitationDetails, RsvpFormData, RsvpOutcome, SubmitState } from '
 type GraduationInvitationCardProps = {
     details?: Partial<InvitationDetails>
     embedded?: boolean
+    onCloseToEnvelope?: () => void
 }
 
 const PROFILE_IMAGE_SRC = '/images/lam-nguyen-anh-hao.jpg'
@@ -69,6 +70,7 @@ const initialFormData: RsvpFormData = {
 function GraduationInvitationCard({
     details,
     embedded = false,
+    onCloseToEnvelope,
 }: GraduationInvitationCardProps) {
     const [formData, setFormData] = useState<RsvpFormData>(initialFormData)
     const [submitState, setSubmitState] = useState<SubmitState>('idle')
@@ -142,8 +144,8 @@ function GraduationInvitationCard({
             const guestDisplayName = formData.guestName.trim() || 'anh/chị/em/bạn '
             const outcome: RsvpOutcome = formData.attendance === 'Tham gia' ? 'attending' : 'declined'
             const successMessage = formData.attendance === 'Tham gia'
-                ? `${guestDisplayName} ơi, cảm ơn anh/chị/em/bạn  đã xác nhận tham dự. Sự hiện diện của anh/chị/em/bạn  là món quà tuyệt vời nhất trong ngày vui của mình. Hẹn gặp anh/chị/em/bạn  sớm nhé!`
-                : `${guestDisplayName} ơi, mình hoàn toàn hiểu lịch trình bận rộn của anh/chị/em/bạn  và cảm ơn anh/chị/em/bạn  đã báo trước. Chúc anh/chị/em/bạn  luôn vui vẻ, hy vọng chúng ta sẽ sớm có dịp hội ngộ!`
+                ? `${guestDisplayName} ơi, cảm ơn anh/chị/em/bạn  đã xác nhận tham dự. Sự hiện diện của anh/chị/em/bạn  là món quà tuyệt vời nhất trong ngày vui của anh/em/tui. Hẹn gặp anh/chị/em/bạn  sớm nhé!`
+                : `${guestDisplayName} ơi, anh/em/tui hoàn toàn hiểu lịch trình bận rộn của anh/chị/em/bạn  và cảm ơn anh/chị/em/bạn  đã báo trước. Chúc anh/chị/em/bạn  luôn vui vẻ, hy vọng chúng ta sẽ sớm có dịp hội ngộ!`
 
             setSubmitState('success')
             setSubmitMessage(successMessage)
@@ -160,6 +162,7 @@ function GraduationInvitationCard({
         setSubmitMessage('')
         setRsvpOutcome(null)
         setFormData(initialFormData)
+        onCloseToEnvelope?.()
     }
 
     return (

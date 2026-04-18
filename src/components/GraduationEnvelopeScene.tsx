@@ -29,7 +29,10 @@ function GraduationEnvelopeScene() {
                             className="fixed inset-0 z-40 overflow-y-auto overscroll-contain px-3 py-4 sm:px-6 sm:py-8"
                         >
                             <div className="mx-auto w-[min(94vw,54rem)] origin-top scale-[0.8] sm:w-[min(92vw,58rem)]">
-                                <GraduationInvitationCard embedded />
+                                <GraduationInvitationCard
+                                    embedded
+                                    onCloseToEnvelope={() => setIsOpened(false)}
+                                />
                             </div>
                         </motion.div>
                     )}
