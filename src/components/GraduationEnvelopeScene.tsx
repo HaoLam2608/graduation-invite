@@ -13,7 +13,7 @@ function GraduationEnvelopeScene() {
 
     return (
         <section className="relative z-10 flex min-h-screen w-full items-center justify-center px-4 py-6 sm:px-8 lg:px-10">
-            <div className="relative h-[min(94vh,56rem)] w-full max-w-5xl">
+            <div className="relative h-[min(94vh,56rem)] w-full max-w-5xl origin-center scale-[0.8]">
                 <AnimatePresence>
                     {isOpened && (
                         <motion.div
@@ -29,7 +29,7 @@ function GraduationEnvelopeScene() {
                             className="absolute inset-0 z-30 flex items-center justify-center"
                         >
                             <div className="w-[min(92vw,58rem)]">
-                                <GraduationInvitationCard embedded showToggleButton={false} />
+                                <GraduationInvitationCard embedded />
                             </div>
                         </motion.div>
                     )}

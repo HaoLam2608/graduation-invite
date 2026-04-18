@@ -40,12 +40,13 @@
   }
 
   .gold-text {
-    background-image: linear-gradient(120deg, var(--navy-a) 0%, var(--navy-b) 42%, var(--navy-c) 55%, var(--navy-b) 78%, var(--navy-a) 100%);
-    background-size: 210% auto;
+    background-image: linear-gradient(115deg, #0f3c73 0%, #17559a 26%, #2476c6 44%, #46a8ff 58%, #2e83d2 76%, #124a80 100%);
+    background-size: 230% auto;
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    animation: navy-shimmer 5.2s linear infinite;
+    animation: navy-shimmer 4.6s linear infinite;
+    filter: drop-shadow(0 0 10px rgba(45, 124, 210, 0.28));
   }
 
   .luxury-noise {
@@ -76,6 +77,42 @@
 
   .navy-glow {
     animation: card-float 6.5s ease-in-out infinite;
+  }
+
+  .tech-scanline {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(180deg,
+        transparent 0%,
+        rgba(40, 116, 192, 0.04) 36%,
+        rgba(73, 150, 226, 0.22) 49%,
+        rgba(40, 116, 192, 0.05) 63%,
+        transparent 100%);
+    background-size: 100% 240%;
+    animation: scanline-sweep 7.2s linear infinite;
+  }
+
+  .tech-circuit-map {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      radial-gradient(circle at 14% 24%, rgba(58, 132, 206, 0.3) 0 2px, transparent 3px),
+      radial-gradient(circle at 82% 68%, rgba(58, 132, 206, 0.24) 0 2px, transparent 3px),
+      linear-gradient(90deg, rgba(74, 143, 214, 0.12) 1px, transparent 1px),
+      linear-gradient(rgba(74, 143, 214, 0.1) 1px, transparent 1px);
+    background-size: 140px 140px, 180px 180px, 24px 24px, 24px 24px;
+    mask-image: linear-gradient(160deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.25));
+  }
+
+  .tech-dot-pulse {
+    animation: dot-pulse 2.2s ease-in-out infinite;
+  }
+
+  .tech-border-pulse {
+    animation: border-pulse 2.8s ease-in-out infinite;
   }
 }
 
@@ -120,5 +157,41 @@
 
   50% {
     transform: translateY(-4px);
+  }
+}
+
+@keyframes scanline-sweep {
+  0% {
+    background-position: 0 -140%;
+  }
+
+  100% {
+    background-position: 0 220%;
+  }
+}
+
+@keyframes dot-pulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+
+  50% {
+    transform: scale(1.25);
+    opacity: 1;
+  }
+}
+
+@keyframes border-pulse {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 1px rgba(131, 176, 233, 0.45), 0 0 0 rgba(67, 134, 213, 0);
+  }
+
+  50% {
+    box-shadow: 0 0 0 1px rgba(131, 176, 233, 0.72), 0 0 14px rgba(67, 134, 213, 0.28);
   }
 }

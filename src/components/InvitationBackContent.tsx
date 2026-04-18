@@ -68,8 +68,26 @@ function InvitationBackContent({
 
             <motion.div
                 variants={lineVariants}
-                className="grid gap-4 rounded-2xl border border-[#b3c8e8] bg-[#f7faff]/90 p-3 sm:grid-cols-[auto_1fr] sm:p-4"
+                className="flex flex-wrap items-center gap-2"
             >
+                <span className="tech-border-pulse rounded-full border border-[#8fb4e2] bg-[#edf5ff] px-3 py-1 font-['JetBrains_Mono','Consolas','Courier_New',monospace] text-[0.65rem] uppercase tracking-[0.14em] text-[#2f5f99]">
+                    module: graduation.invite
+                </span>
+                <span className="tech-border-pulse inline-flex items-center gap-2 rounded-full border border-[#8fb4e2] bg-[#edf5ff] px-3 py-1 font-['JetBrains_Mono','Consolas','Courier_New',monospace] text-[0.65rem] uppercase tracking-[0.14em] text-[#2f5f99]">
+                    <span className="tech-dot-pulse h-1.5 w-1.5 rounded-full bg-[#2f88df]" />
+                    status: online
+                </span>
+                <span className="tech-border-pulse rounded-full border border-[#8fb4e2] bg-[#edf5ff] px-3 py-1 font-['JetBrains_Mono','Consolas','Courier_New',monospace] text-[0.65rem] uppercase tracking-[0.14em] text-[#2f5f99]">
+                    mode: one-face card
+                </span>
+            </motion.div>
+
+            <motion.div
+                variants={lineVariants}
+                className="relative grid gap-4 overflow-hidden rounded-2xl border border-[#b3c8e8] bg-[linear-gradient(155deg,#f6fbff_0%,#ebf4ff_46%,#e2eeff_100%)] p-3 sm:grid-cols-[auto_1fr] sm:p-4"
+            >
+                <div className="pointer-events-none absolute inset-0 opacity-25 [background-image:linear-gradient(rgba(124,164,220,0.24)_1px,transparent_1px),linear-gradient(90deg,rgba(124,164,220,0.24)_1px,transparent_1px)] [background-size:24px_24px]" />
+                <div className="tech-scanline opacity-35" />
                 <div className="h-32 w-24 overflow-hidden rounded-xl border border-[#bad0ee] bg-[#eff5ff] sm:h-36 sm:w-28">
                     {!imageError ? (
                         <img
@@ -84,7 +102,10 @@ function InvitationBackContent({
                         </div>
                     )}
                 </div>
-                <div className="space-y-1">
+                <div className="relative space-y-2 rounded-xl border border-[#b9d0ef]/75 bg-[#f8fbff]/80 p-3">
+                    <p className="font-['JetBrains_Mono','Consolas','Courier_New',monospace] text-[0.64rem] uppercase tracking-[0.16em] text-[#5b7fb3]">
+                        system overview
+                    </p>
                     <p className="font-['Inter'] text-sm uppercase tracking-[0.2em] text-[#4e73a8] sm:text-base">
                         {invitation.degree}
                     </p>
@@ -114,120 +135,110 @@ function InvitationBackContent({
                 <motion.form
                     variants={lineVariants}
                     onSubmit={onSubmitRsvp}
-                    className="mt-3 rounded-2xl border border-[#8cb1df] bg-[linear-gradient(160deg,#f1f7ff_0%,#e2eeff_100%)] p-4 shadow-[0_14px_28px_rgba(14,48,96,0.25)] sm:p-5"
+                    className="relative mt-3 overflow-hidden rounded-2xl border border-[#8cb1df] bg-[linear-gradient(160deg,#f1f7ff_0%,#e2eeff_100%)] p-4 shadow-[0_14px_28px_rgba(14,48,96,0.25)] sm:p-5"
                 >
-                    <div className="mb-4">
-                        <h3 className="font-['Playfair_Display'] text-2xl text-[#214c87] sm:text-3xl">
-                            Xác nhận tham gia
-                        </h3>
-                        <p className="mt-1 font-['Inter'] text-sm text-[#4f6f9c]">
-                            Điền thông tin để gửi xác nhận trực tiếp đến email của Hào.
-                        </p>
-                    </div>
+                    <div className="tech-circuit-map opacity-12" />
+                    <div className="tech-scanline opacity-40" />
 
-                    <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                        <label className="flex flex-col gap-1 text-sm font-medium text-[#2e5288]">
-                            Họ và tên
-                            <input
-                                required
-                                type="text"
-                                name="guestName"
-                                value={formData.guestName}
-                                onChange={onInputChange}
-                                className="rounded-xl border border-[#bfd0ea] bg-white px-3 py-2 text-[#1e467e] outline-none transition focus:border-[#4f7cbb] focus:ring-2 focus:ring-[#7fa3d8]/30"
-                                placeholder="Nhập họ tên của anh/chị/em"
-                            />
-                        </label>
+                    <div className="relative">
+                        <div className="mb-4">
+                            <h3 className="font-['Playfair_Display'] text-2xl text-[#214c87] sm:text-3xl">
+                                Xác nhận tham gia
+                            </h3>
+                            <p className="mt-1 font-['Inter'] text-sm text-[#4f6f9c]">
+                                Điền thông tin để gửi xác nhận trực tiếp đến email của Hào.
+                            </p>
+                        </div>
 
-                        <label className="flex flex-col gap-1 text-sm font-medium text-[#2e5288]">
-                            Email
-                            <input
-                                required
-                                type="email"
-                                name="guestEmail"
-                                value={formData.guestEmail}
-                                onChange={onInputChange}
-                                className="rounded-xl border border-[#bfd0ea] bg-white px-3 py-2 text-[#1e467e] outline-none transition focus:border-[#4f7cbb] focus:ring-2 focus:ring-[#7fa3d8]/30"
-                                placeholder="you@example.com"
-                            />
-                        </label>
+                        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                            <label className="flex flex-col gap-1 text-sm font-medium text-[#2e5288]">
+                                Họ và tên
+                                <input
+                                    required
+                                    type="text"
+                                    name="guestName"
+                                    value={formData.guestName}
+                                    onChange={onInputChange}
+                                    className="rounded-xl border border-[#bfd0ea] bg-white/92 px-3 py-2 text-[#1e467e] outline-none transition duration-300 focus:border-[#3676c3] focus:ring-2 focus:ring-[#6fa9e6]/30 focus:shadow-[0_0_0_1px_rgba(54,118,195,0.22),0_0_14px_rgba(76,141,215,0.22)]"
+                                    placeholder="Nhập họ tên của anh/chị/em"
+                                />
+                            </label>
 
-                        <label className="flex flex-col gap-1 text-sm font-medium text-[#2e5288]">
-                            Số điện thoại
-                            <input
-                                type="tel"
-                                name="guestPhone"
-                                value={formData.guestPhone}
-                                onChange={onInputChange}
-                                className="rounded-xl border border-[#bfd0ea] bg-white px-3 py-2 text-[#1e467e] outline-none transition focus:border-[#4f7cbb] focus:ring-2 focus:ring-[#7fa3d8]/30"
-                                placeholder="090xxxxxxx"
-                            />
-                        </label>
+                            <label className="flex flex-col gap-1 text-sm font-medium text-[#2e5288]">
+                                Email
+                                <input
+                                    required
+                                    type="email"
+                                    name="guestEmail"
+                                    value={formData.guestEmail}
+                                    onChange={onInputChange}
+                                    className="rounded-xl border border-[#bfd0ea] bg-white/92 px-3 py-2 text-[#1e467e] outline-none transition duration-300 focus:border-[#3676c3] focus:ring-2 focus:ring-[#6fa9e6]/30 focus:shadow-[0_0_0_1px_rgba(54,118,195,0.22),0_0_14px_rgba(76,141,215,0.22)]"
+                                    placeholder="you@example.com"
+                                />
+                            </label>
 
-                        <label className="flex flex-col gap-1 text-sm font-medium text-[#2e5288]">
-                            Trạng thái
-                            <select
-                                name="attendance"
-                                value={formData.attendance}
-                                onChange={onInputChange}
-                                className="rounded-xl border border-[#bfd0ea] bg-white px-3 py-2 text-[#1e467e] outline-none transition focus:border-[#4f7cbb] focus:ring-2 focus:ring-[#7fa3d8]/30"
+                            <label className="flex flex-col gap-1 text-sm font-medium text-[#2e5288]">
+                                Số điện thoại
+                                <input
+                                    type="tel"
+                                    name="guestPhone"
+                                    value={formData.guestPhone}
+                                    onChange={onInputChange}
+                                    className="rounded-xl border border-[#bfd0ea] bg-white/92 px-3 py-2 text-[#1e467e] outline-none transition duration-300 focus:border-[#3676c3] focus:ring-2 focus:ring-[#6fa9e6]/30 focus:shadow-[0_0_0_1px_rgba(54,118,195,0.22),0_0_14px_rgba(76,141,215,0.22)]"
+                                    placeholder="090xxxxxxx"
+                                />
+                            </label>
+
+                            <label className="flex flex-col gap-1 text-sm font-medium text-[#2e5288]">
+                                Trạng thái
+                                <select
+                                    name="attendance"
+                                    value={formData.attendance}
+                                    onChange={onInputChange}
+                                    className="rounded-xl border border-[#bfd0ea] bg-white/92 px-3 py-2 text-[#1e467e] outline-none transition duration-300 focus:border-[#3676c3] focus:ring-2 focus:ring-[#6fa9e6]/30 focus:shadow-[0_0_0_1px_rgba(54,118,195,0.22),0_0_14px_rgba(76,141,215,0.22)]"
+                                >
+                                    <option value="Tham gia">Tham gia</option>
+                                    <option value="Không thể tham gia">Không thể tham gia</option>
+                                </select>
+                            </label>
+
+                            <label className="flex flex-col gap-1 text-sm font-medium text-[#2e5288] sm:col-span-2">
+                                Lời nhắn
+                                <textarea
+                                    name="message"
+                                    value={formData.message}
+                                    onChange={onInputChange}
+                                    rows={3}
+                                    className="rounded-xl border border-[#bfd0ea] bg-white/92 px-3 py-2 text-[#1e467e] outline-none transition duration-300 focus:border-[#3676c3] focus:ring-2 focus:ring-[#6fa9e6]/30 focus:shadow-[0_0_0_1px_rgba(54,118,195,0.22),0_0_14px_rgba(76,141,215,0.22)]"
+                                    placeholder="Gửi lời nhắn"
+                                />
+                            </label>
+                        </div>
+
+                        <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                            <button
+                                type="submit"
+                                disabled={submitState === 'loading'}
+                                className="inline-flex items-center justify-center rounded-full border border-[#7ea5da] bg-[linear-gradient(135deg,#103b76_0%,#1d5ca8_100%)] px-6 py-3 font-['Inter'] text-xs uppercase tracking-[0.2em] text-white shadow-[0_10px_20px_rgba(10,36,79,0.35)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_14px_24px_rgba(10,44,92,0.35)] disabled:cursor-not-allowed disabled:opacity-70"
                             >
-                                <option value="Tham gia">Tham gia</option>
-                                <option value="Không thể tham gia">Không thể tham gia</option>
-                            </select>
-                        </label>
+                                {submitState === 'loading' ? 'Đang gửi...' : 'Xác nhận'}
+                            </button>
 
-                        <label className="flex flex-col gap-1 text-sm font-medium text-[#2e5288] sm:col-span-2">
-                            Số lượng khách
-                            <select
-                                name="guestCount"
-                                value={formData.guestCount}
-                                onChange={onInputChange}
-                                className="rounded-xl border border-[#bfd0ea] bg-white px-3 py-2 text-[#1e467e] outline-none transition focus:border-[#4f7cbb] focus:ring-2 focus:ring-[#7fa3d8]/30"
+                            <p
+                                className={`font-['Inter'] text-sm ${submitState === 'error'
+                                    ? 'text-red-700'
+                                    : submitState === 'loading'
+                                        ? 'text-[#355d95]'
+                                        : 'text-[#4f6f9c]'
+                                    }`}
+                                role="status"
+                                aria-live="polite"
                             >
-                                <option value="1">1 người</option>
-                                <option value="2">2 người</option>
-                                <option value="3">3 người</option>
-                                <option value="4">4 người</option>
-                            </select>
-                        </label>
-
-                        <label className="flex flex-col gap-1 text-sm font-medium text-[#2e5288] sm:col-span-2">
-                            Lời nhắn
-                            <textarea
-                                name="message"
-                                value={formData.message}
-                                onChange={onInputChange}
-                                rows={3}
-                                className="rounded-xl border border-[#bfd0ea] bg-white px-3 py-2 text-[#1e467e] outline-none transition focus:border-[#4f7cbb] focus:ring-2 focus:ring-[#7fa3d8]/30"
-                                placeholder="Gửi lời nhắn"
-                            />
-                        </label>
-                    </div>
-
-                    <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                        <button
-                            type="submit"
-                            disabled={submitState === 'loading'}
-                            className="inline-flex items-center justify-center rounded-full border border-[#7ea5da] bg-[#103b76] px-6 py-3 font-['Inter'] text-xs uppercase tracking-[0.2em] text-white shadow-[0_10px_20px_rgba(10,36,79,0.35)] transition hover:bg-[#1a4a8a] disabled:cursor-not-allowed disabled:opacity-70"
-                        >
-                            {submitState === 'loading' ? 'Đang gửi...' : 'Xác nhận'}
-                        </button>
-
-                        <p
-                            className={`font-['Inter'] text-sm ${submitState === 'error'
-                                ? 'text-red-700'
-                                : submitState === 'loading'
-                                    ? 'text-[#355d95]'
-                                    : 'text-[#4f6f9c]'
-                                }`}
-                            role="status"
-                            aria-live="polite"
-                        >
-                            {submitState === 'error' || submitState === 'loading'
-                                ? submitMessage
-                                : ''}
-                        </p>
+                                {submitState === 'error' || submitState === 'loading'
+                                    ? submitMessage
+                                    : ''}
+                            </p>
+                        </div>
                     </div>
                 </motion.form>
             )}

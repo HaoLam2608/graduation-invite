@@ -13,7 +13,6 @@ export type RsvpFormData = {
     guestEmail: string
     guestPhone: string
     attendance: string
-    guestCount: string
     message: string
 }
 

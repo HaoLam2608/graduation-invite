@@ -3,13 +3,11 @@ import type { ChangeEvent, FormEvent } from 'react'
 import { motion } from 'framer-motion'
 import type { Variants } from 'framer-motion'
 import InvitationBackContent from './InvitationBackContent'
-import InvitationFrontCover from './InvitationFrontCover'
 import type { InvitationDetails, RsvpFormData, RsvpOutcome, SubmitState } from './invitationTypes'
 
 type GraduationInvitationCardProps = {
     details?: Partial<InvitationDetails>
     embedded?: boolean
-    showToggleButton?: boolean
 }
 
 const PROFILE_IMAGE_SRC = '/images/lam-nguyen-anh-hao.jpg'
@@ -60,16 +58,13 @@ const initialFormData: RsvpFormData = {
     guestEmail: '',
     guestPhone: '',
     attendance: 'Tham gia',
-    guestCount: '1',
     message: '',
 }
 
 function GraduationInvitationCard({
     details,
     embedded = false,
-    showToggleButton = true,
 }: GraduationInvitationCardProps) {
-    const [isOpen, setIsOpen] = useState(false)
     const [formData, setFormData] = useState<RsvpFormData>(initialFormData)
     const [submitState, setSubmitState] = useState<SubmitState>('idle')
     const [submitMessage, setSubmitMessage] = useState('')
@@ -102,7 +97,6 @@ function GraduationInvitationCard({
             payload.append('Email', formData.guestEmail)
             payload.append('Số điện thoại', formData.guestPhone)
             payload.append('Trạng thái tham gia', formData.attendance)
-            payload.append('Số lượng khách', formData.guestCount)
             payload.append('Lời nhắn', formData.message || '(Không có)')
             payload.append('Sự kiện', 'Lễ Tốt Nghiệp - Lâm Nguyễn Anh Hào')
             payload.append('Thời gian sự kiện', `${invitation.dateText} - ${invitation.timeText}`)
@@ -144,7 +138,6 @@ function GraduationInvitationCard({
         setSubmitState('idle')
         setSubmitMessage('')
         setRsvpOutcome(null)
-        setIsOpen(false)
         setFormData(initialFormData)
     }
 
@@ -157,29 +150,35 @@ function GraduationInvitationCard({
                 className={`${embedded ? 'mx-auto w-full max-w-4xl' : 'navy-glow mx-auto w-full max-w-4xl'}`}
             >
                 <motion.article
-                    onClick={() => {
-                        if (!isOpen) {
-                            setIsOpen(true)
-                        }
-                    }}
-                    className="relative overflow-hidden rounded-[2rem] border border-[#759fd8]/75 bg-[#e6f0ff]/90 text-[#10284f] shadow-[0_30px_65px_rgba(11,39,84,0.45)] transition duration-500 hover:-translate-y-0.5"
+                    className="relative overflow-hidden rounded-[2rem] border border-[#78a4dc]/80 bg-[linear-gradient(158deg,#dceaff_0%,#d0e4ff_48%,#c2dbfb_100%)] text-[#10284f] shadow-[0_30px_65px_rgba(11,39,84,0.32)] transition duration-500 hover:-translate-y-0.5"
                     aria-label="Thiệp mời lễ tốt nghiệp"
                 >
-                    <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(112,156,226,0.32),transparent_56%)]" />
-                    <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(130deg,transparent_0%,rgba(43,92,170,0.2)_47%,transparent_100%)]" />
+                    <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(112,156,226,0.34),transparent_56%)]" />
+                    <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(130deg,transparent_0%,rgba(43,92,170,0.18)_47%,transparent_100%)]" />
+                    <div className="pointer-events-none absolute inset-0 opacity-25 [background-image:linear-gradient(rgba(115,160,227,0.22)_1px,transparent_1px),linear-gradient(90deg,rgba(115,160,227,0.22)_1px,transparent_1px)] [background-size:34px_34px]" />
+                    <div className="tech-circuit-map opacity-20" />
+                    <div className="tech-scanline opacity-60" />
 
                     <div className="relative p-5 sm:p-6 lg:p-7">
-                        <div className="mb-5 flex items-center justify-between border-b border-[#99b8e0] pb-5">
-                            <span className="font-['Inter'] text-xs uppercase tracking-[0.35em] text-[#355f97]">
-                                Lễ Tốt Nghiệp 2026
-                            </span>
-                            <span className="font-['Inter'] text-[0.7rem] uppercase tracking-[0.3em] text-[#4d73a8]">
-                                Thư mời chính thức
-                            </span>
+                        <div className="mb-5 border-b border-[#99b8e0] pb-5">
+                            <div className="flex items-center justify-between">
+                                <div className="flex items-center gap-2">
+                                    <span className="tech-dot-pulse h-2 w-2 rounded-full bg-[#2f88df] shadow-[0_0_10px_rgba(47,136,223,0.62)]" />
+                                    <span className="font-['Inter'] text-xs uppercase tracking-[0.35em] text-[#355f97]">
+                                        Lễ Tốt Nghiệp 2026
+                                    </span>
+                                </div>
+                                <span className="font-['Inter'] text-[0.7rem] uppercase tracking-[0.3em] text-[#4d73a8]">
+                                    Thư mời chính thức
+                                </span>
+                            </div>
+                            <p className="mt-3 font-['JetBrains_Mono','Consolas','Courier_New',monospace] text-[0.68rem] uppercase tracking-[0.18em] text-[#38679f]">
+                                protocol://huit.graduation.invite | node: ui-hologram
+                            </p>
                         </div>
 
                         <InvitationBackContent
-                            isOpen={isOpen}
+                            isOpen
                             invitation={invitation}
                             portraitSrc={PROFILE_IMAGE_SRC}
                             formData={formData}
@@ -193,29 +192,7 @@ function GraduationInvitationCard({
                             onSubmitRsvp={handleSubmitRsvp}
                         />
                     </div>
-
-                    <InvitationFrontCover
-                        isOpen={isOpen}
-                        invitation={invitation}
-                        portraitSrc={PROFILE_IMAGE_SRC}
-                        onContinue={() => setIsOpen(true)}
-                    />
                 </motion.article>
-
-                {showToggleButton && (
-                    <div className="relative z-30 -mt-4 flex items-center justify-center sm:-mt-5">
-                        <button
-                            type="button"
-                            onClick={() => setIsOpen((prev) => !prev)}
-                            className="group inline-flex min-w-[220px] items-center justify-center gap-3 rounded-full border border-[#8ab0e3] bg-[#123b77] px-8 py-4 font-['Inter'] text-sm uppercase tracking-[0.28em] text-[#eef5ff] shadow-[0_14px_32px_rgba(11,42,89,0.5)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#1b4f93] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#8cb2e4]"
-                            aria-expanded={isOpen}
-                            aria-label={isOpen ? 'Đóng thiệp' : 'Mở thiệp'}
-                        >
-                            {isOpen ? 'Đóng thiệp' : 'Mở thiệp'}
-                            <span className="text-sm transition-transform duration-300 group-hover:translate-x-1">{isOpen ? '−' : '+'}</span>
-                        </button>
-                    </div>
-                )}
             </motion.div>
         </div>
     )
